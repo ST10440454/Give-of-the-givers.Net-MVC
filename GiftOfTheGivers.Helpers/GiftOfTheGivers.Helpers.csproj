@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <PackageId>GiftOfTheGivers.Helpers</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Gift of the Givers Project Team</Authors>
+    <Description>Shared utility methods for the Gift of the Givers prototype: tax certificate number formatting and donation total calculations.</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+</Project>

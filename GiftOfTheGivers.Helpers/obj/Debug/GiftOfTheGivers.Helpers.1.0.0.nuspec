@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>GiftOfTheGivers.Helpers</id>
+    <version>1.0.0</version>
+    <authors>Gift of the Givers Project Team</authors>
+    <description>Shared utility methods for the Gift of the Givers prototype: tax certificate number formatting and donation total calculations.</description>
+    <repository type="git" commit="c2f1795aa6df153f22aabe682b124e2b062ede7c" />
+    <dependencies>
+      <group targetFramework="net8.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\Student\Downloads\GiftOfTheGivers\GiftOfTheGivers\GiftOfTheGivers.Helpers\bin\Debug\net8.0\GiftOfTheGivers.Helpers.dll" target="lib\net8.0\GiftOfTheGivers.Helpers.dll" />
+  </files>
+</package>
