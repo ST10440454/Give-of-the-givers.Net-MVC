@@ -1,0 +1,58 @@
+﻿@model GiftOfTheGivers.Models.ViewModels.EmployeeDashboardViewModel
+@{
+    ViewData["Title"] = "Employee Dashboard";
+}
+
+<h2>Employee Dashboard</h2>
+<p class="text-muted">Overview of all donations received. For volunteer sign-ups, see <a asp-controller="Volunteer" asp-action="SignUps">Volunteer Sign-ups</a>.</p>
+
+<div class="row g-3 mb-4">
+    @if (Model.TotalsByCurrency.Count == 0)
+    {
+        <div class="col-12">
+            <div class="alert alert-info mb-0">No donations recorded yet.</div>
+        </div>
+    }
+    else
+    {
+        @foreach (var total in Model.TotalsByCurrency)
+        {
+            <div class="col-sm-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h6 class="text-muted text-uppercase small mb-1">Total raised (@total.Currency)</h6>
+                        <p class="display-6 fw-bold mb-0">@total.Total.ToString("N2") @total.Currency</p>
+                        <p class="text-muted small mb-0">@total.Count donation@(total.Count == 1 ? "" : "s")</p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<h4>All donations</h4>
+<table class="table table-striped align-middle">
+    <thead>
+        <tr>
+            <th>Donor</th>
+            <th>Amount</th>
+            <th>Type</th>
+            <th>Project</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var d in Model.Donations)
+        {
+            <tr>
+                <td>@(d.DonorUser?.FullName ?? d.GuestName ?? "Anonymous")</td>
+                <td>@d.Amount.ToString("N2") @d.Currency</td>
+                <td>@d.DonationType</td>
+                <td>@(d.Project?.ProjectName ?? "General fund")</td>
+                <td>@d.DonationDate.ToString("dd MMM yyyy")</td>
+                <td><span class="badge bg-secondary">@d.PaymentStatus</span></td>
+            </tr>
+        }
+    </tbody>
+</table>

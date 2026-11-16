@@ -1,0 +1,64 @@
+﻿@model List<GiftOfTheGivers.Models.Volunteer>
+@{
+    ViewData["Title"] = "Volunteer sign-ups";
+}
+<h2>Volunteer sign-ups</h2>
+
+<table class="table table-striped align-middle">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Skills</th>
+            <th>Availability</th>
+            <th>Status</th>
+            <th>Registered</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var v in Model)
+        {
+            <tr>
+                <td>@v.FullName</td>
+                <td>@v.Skills</td>
+                <td>@v.Availability</td>
+                <td>
+                    @{
+                        var badgeClass = v.Status switch
+                        {
+                            GiftOfTheGivers.Models.VolunteerStatus.Approved => "bg-success",
+                            GiftOfTheGivers.Models.VolunteerStatus.Rejected => "bg-danger",
+                            GiftOfTheGivers.Models.VolunteerStatus.Assigned => "bg-primary",
+                            _ => "bg-secondary"
+                        };
+                    }
+                    <span class="badge @badgeClass">@v.Status</span>
+                </td>
+                <td>@v.RegisteredAt.ToString("dd MMM yyyy")</td>
+                <td>
+                    @if (v.Status == GiftOfTheGivers.Models.VolunteerStatus.Pending)
+                    {
+                        <form asp-action="Approve" asp-route-id="@v.VolunteerId" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-sm btn-success">Approve</button>
+                        </form>
+                        <form asp-action="Reject" asp-route-id="@v.VolunteerId" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Reject</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <span class="text-muted small">No action needed</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<footer class="mt-4 pt-3 border-top text-center text-muted small">
+    <p class="mb-1">Gift of the Givers Foundation</p>
+    <p class="mb-1">Solomon Street, Pretoria, South Africa</p>
+    <p class="mb-1">Cellphone: 068 872 1126</p>
+    <p class="mb-0">Email: info@giftofthegivers.org</p>
+    <p class="mb-0">GiftOfTheGivers</p>
+</footer>

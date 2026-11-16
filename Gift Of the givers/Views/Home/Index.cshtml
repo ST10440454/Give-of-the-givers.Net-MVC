@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="p-5 mb-4 bg-light rounded-3 text-center">
+    <h1 class="display-5 fw-bold">Gift of the Givers</h1>
+    <p class="fs-5 col-md-8 mx-auto">
+        Coordinating volunteers, donations, and disaster relief efforts — together we respond faster.
+    </p>
+    <a class="btn btn-danger btn-lg me-2" asp-controller="Donation" asp-action="Create">Donate now</a>
+    <a class="btn btn-outline-danger btn-lg" asp-controller="Volunteer" asp-action="Create">Become a volunteer</a>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Volunteer Management</h5>
+                <p class="card-text">Register your interest, list your skills and availability, and get matched to relief operations.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Donation Management</h5>
+                <p class="card-text">Make a one-time or recurring donation in ZAR, USD, or EUR — as a guest or registered donor.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Disaster Relief Management</h5>
+                <p class="card-text">Follow live updates from our field teams on ongoing relief operations.</p>
+            </div>
+        </div>
+    </div>
+</div>

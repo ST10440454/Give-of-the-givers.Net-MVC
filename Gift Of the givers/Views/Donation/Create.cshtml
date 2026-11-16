@@ -1,0 +1,75 @@
+﻿@model GiftOfTheGivers.Models.ViewModels.DonationCreateViewModel
+@{
+    ViewData["Title"] = "Donate";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2>Make a Donation</h2>
+        @if (Model.IsGuest)
+        {
+            <div class="alert alert-info">
+                Donating as a guest. <a asp-controller="Account" asp-action="Login">Log in</a> or
+                <a asp-controller="Account" asp-action="Register">register</a> to track your donation history.
+            </div>
+        }
+
+        <form asp-controller="Donation" asp-action="Create" method="post">
+            <input type="hidden" asp-for="IsGuest" />
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            @if (Model.IsGuest)
+            {
+                <div class="mb-3">
+                    <label asp-for="GuestName" class="form-label"></label>
+                    <input asp-for="GuestName" class="form-control" />
+                    <span asp-validation-for="GuestName" class="text-danger"></span>
+                </div>
+            }
+
+            <div class="mb-3">
+                <label asp-for="Amount" class="form-label"></label>
+                <input asp-for="Amount" class="form-control" type="number" step="0.01" min="1" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Currency" class="form-label"></label>
+                <select asp-for="Currency" class="form-select">
+                    <option value="ZAR">ZAR (South African Rand)</option>
+                    <option value="USD">USD (US Dollar)</option>
+                    <option value="EUR">EUR (Euro)</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Donation type</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" asp-for="DonationType" value="OneTime" checked />
+                    <label class="form-check-label">One-time</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" asp-for="DonationType" value="Recurring" />
+                    <label class="form-check-label">Recurring</label>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ProjectId" class="form-label"></label>
+                <select asp-for="ProjectId" class="form-select">
+                    <option value="">General fund</option>
+                    @foreach (var project in Model.AvailableProjects)
+                    {
+                        <option value="@project.ProjectId">@project.ProjectName</option>
+                    }
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-danger">Donate</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

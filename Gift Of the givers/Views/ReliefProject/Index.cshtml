@@ -1,0 +1,99 @@
+﻿@model List<GiftOfTheGivers.Models.ReliefProject>
+@{
+    ViewData["Title"] = "Relief Projects";
+}
+
+<h1>Ongoing Relief Projects</h1>
+
+@if (Model.Count == 0)
+{
+    <div class="alert alert-info">There are no active relief projects at the moment.</div>
+}
+
+@foreach (var project in Model)
+{
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">@project.ProjectName</h5>
+            <h6 class="card-subtitle text-muted mb-2">@project.Location · Started @project.StartDate.ToString("dd MMM yyyy")</h6>
+            <p>@project.Description</p>
+
+            @if (project.Updates is { Count: > 0 })
+            {
+                <h6>Latest updates</h6>
+                <ul class="list-unstyled">
+                    @foreach (var u in project.Updates.OrderByDescending(x => x.PostedAt))
+                    {
+                        <li class="mb-1"><span class="text-muted small">@u.PostedAt.ToString("dd MMM yyyy HH:mm")</span> — @u.Content</li>
+                    }
+                </ul>
+            }
+
+            @if (User.IsInRole("Employee"))
+            {
+                <a asp-action="PostUpdate" asp-route-projectId="@project.ProjectId" class="btn btn-sm btn-outline-danger">Post update</a>
+            }
+        </div>
+    </div>
+}
+
+<hr />
+
+<h1>Gift of the Givers: Disaster Incidents Record</h1>
+
+<p>The Gift of the Givers Foundation is one of the most prominent disaster response organizations in Africa, having provided extensive humanitarian aid across the globe since its inception. Their interventions cover natural disasters (floods, earthquakes, fires, droughts) and human-made crises (wars, civil unrest, and evacuations).</p>
+
+<p>Here is a record of their disaster response incidents, categorized by recent and historical events:</p>
+
+<h2>Recent and Ongoing Interventions (2023–2026)</h2>
+
+<div class="incident-category">
+    <h3>South Africa</h3>
+    <ul>
+        <li><strong>2026 National Floods:</strong> Coordinated extensive relief efforts following torrential rains in January 2026 that devastated parts of Mpumalanga, Limpopo, KwaZulu-Natal (Utrecht), and the North West province (Mafikeng). Teams provided food, shelter, bedding, hygiene kits, and medical supplies.</li>
+        <li><strong>Western Cape Fires (2025/2026):</strong> Responded to destructive fires during the festive season in informal settlements, including Khayelitsha and Du Noon.</li>
+        <li><strong>Eastern Cape Storms:</strong> Provided essential support to the Cofimvaba community after a severe storm flattened over 100 homes.</li>
+        <li><strong>Knysna Water Crisis (2026):</strong> Intervened with emergency relief during severe water shortages in the region.</li>
+    </ul>
+</div>
+
+<div class="incident-category">
+    <h3>International</h3>
+    <ul>
+        <li><strong>Sudan War &amp; Evacuations (2023–2025):</strong> Provided crucial aid for the war-torn region and collaborated with the South African government to successfully evacuate citizens from Khartoum to Egypt during the 2023 civil war outbreak.</li>
+        <li><strong>Palestine/Gaza (Ongoing):</strong> Steadfast emergency assistance, medical support, and civilian relief in response to airstrikes and ongoing conflict.</li>
+        <li><strong>Somalia Floods (2023):</strong> Deployed emergency supplies (food, shelter, water) after El-Niño caused massive flash floods in regions like Baydio and Lower Juba.</li>
+        <li><strong>Malawi (2023):</strong> Provided disaster relief following the devastation of Cyclone Freddy.</li>
+    </ul>
+</div>
+
+<hr>
+
+<h2>Major Historical Interventions (1994–2022)</h2>
+
+<div class="incident-category">
+    <h3>South African Crises</h3>
+    <ul>
+        <li><strong>2022:</strong> Extensive relief following the catastrophic KwaZulu-Natal floods, as well as the widespread KZN and Gauteng civil unrest/looting.</li>
+        <li><strong>2020:</strong> National COVID-19 pandemic intervention, providing medical equipment, testing, and food supplies.</li>
+        <li><strong>2019:</strong> National Drought Relief efforts to assist severely affected farming communities and towns.</li>
+    </ul>
+</div>
+
+<div class="incident-category">
+    <h3>International Natural Disasters</h3>
+    <ul>
+        <li><strong>Earthquakes:</strong> Haiti (2010), Indonesia (2006), Pakistan (2005), Turkey (1999).</li>
+        <li><strong>Tsunami (2004/2005):</strong> Delivered tons of food and medical supplies to tsunami victims in Somalia and Sri Lanka, becoming the first African humanitarian relief mission to fly directly into Somalia for the crisis.</li>
+        <li><strong>Floods &amp; Cyclones:</strong> Pakistan Floods (2010, 2022), Mozambique (2000, 2001, 2013, 2017), and the Philippines (2013).</li>
+    </ul>
+</div>
+
+<div class="incident-category">
+    <h3>International Conflict &amp; Human-Made Disasters</h3>
+    <ul>
+        <li><strong>2022:</strong> Medical and humanitarian aid for the Ukraine War.</li>
+        <li><strong>2020:</strong> Emergency response to the massive port explosion in Beirut, Lebanon.</li>
+        <li><strong>1994–2012:</strong> Deployed rescue and medical teams, as well as supplies, to conflict zones including Rwanda (1994), Chechnya (1997), Kosova (1999), Afghanistan (2002), the Democratic Republic of Congo (2002), Angola (2003), Bosnia (2005), and Juba, South Sudan (2008).</li>
+    </ul>
+</div>

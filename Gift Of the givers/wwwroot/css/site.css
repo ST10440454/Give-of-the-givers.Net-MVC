@@ -1,0 +1,387 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    --gotg-orange: #F47B20;
+    --gotg-orange-dark: #D4650F;
+    --gotg-charcoal: #2B2B2B;
+    --gotg-slate: #5B6470;
+    --gotg-cream: #FBF8F3;
+    --gotg-line: #E8E1D6;
+    --font-display: 'Poppins', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--gotg-cream);
+    color: var(--gotg-charcoal);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+main {
+    flex: 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--gotg-charcoal);
+    letter-spacing: -0.01em;
+}
+
+a {
+    color: var(--gotg-orange-dark);
+}
+
+    a:hover {
+        color: var(--gotg-orange);
+    }
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+    }
+}
+
+.navbar.bg-danger {
+    background-color: var(--gotg-orange) !important;
+    box-shadow: 0 2px 10px rgba(43, 43, 43, 0.12);
+}
+
+.navbar-brand {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.01em;
+}
+
+    .navbar-brand img {
+        border-radius: 50%;
+        background: #fff;
+        padding: 3px;
+    }
+
+.navbar-dark .nav-link {
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.92);
+    padding: 0.5rem 0.85rem !important;
+    border-radius: 6px;
+    transition: background-color 0.15s ease;
+}
+
+    .navbar-dark .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.15);
+        color: #fff;
+    }
+
+.btn-danger {
+    background-color: var(--gotg-orange);
+    border-color: var(--gotg-orange);
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 0.55rem 1.4rem;
+    transition: transform 0.12s ease, background-color 0.15s ease;
+}
+
+    .btn-danger:hover,
+    .btn-danger:focus {
+        background-color: var(--gotg-orange-dark);
+        border-color: var(--gotg-orange-dark);
+        transform: translateY(-1px);
+    }
+
+.btn-outline-danger {
+    color: var(--gotg-orange-dark);
+    border-color: var(--gotg-orange);
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 0.55rem 1.4rem;
+}
+
+    .btn-outline-danger:hover {
+        background-color: var(--gotg-orange);
+        border-color: var(--gotg-orange);
+        color: #fff;
+    }
+
+.btn:focus-visible,
+.nav-link:focus-visible,
+a:focus-visible {
+    outline: 3px solid var(--gotg-orange-dark);
+    outline-offset: 2px;
+}
+
+.p-5.mb-4.bg-light.rounded-3 {
+    background: linear-gradient(135deg, #FFF4EA 0%, var(--gotg-cream) 60%) !important;
+    border: 1px solid var(--gotg-line);
+    position: relative;
+    overflow: hidden;
+}
+
+    .p-5.mb-4.bg-light.rounded-3::before {
+        content: "";
+        position: absolute;
+        top: -40px;
+        right: -40px;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(244, 123, 32, 0.14) 0%, transparent 70%);
+    }
+
+.display-5.fw-bold {
+    font-family: var(--font-display);
+    font-weight: 800;
+}
+
+.card {
+    border: 1px solid var(--gotg-line);
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(43, 43, 43, 0.05);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+    .card:hover {
+        box-shadow: 0 8px 20px rgba(43, 43, 43, 0.08);
+        transform: translateY(-2px);
+    }
+
+.card-header.bg-danger {
+    background-color: var(--gotg-orange) !important;
+    border-bottom: none;
+    font-family: var(--font-display);
+    font-weight: 600;
+}
+
+.card.border-danger {
+    border-color: var(--gotg-orange) !important;
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--gotg-charcoal);
+    font-size: 0.92rem;
+}
+
+.form-control,
+.form-select {
+    border-color: var(--gotg-line);
+    border-radius: 8px;
+    padding: 0.55rem 0.8rem;
+}
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: var(--gotg-orange);
+        box-shadow: 0 0 0 0.2rem rgba(244, 123, 32, 0.15);
+    }
+
+.form-check-input:checked {
+    background-color: var(--gotg-orange);
+    border-color: var(--gotg-orange);
+}
+
+.alert-info {
+    background-color: #FFF4EA;
+    border-color: var(--gotg-line);
+    color: var(--gotg-charcoal);
+}
+
+.alert-success {
+    background-color: #EFF7EF;
+    border-color: #CFE6CF;
+    color: #2F5D33;
+}
+
+.table thead th {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--gotg-slate);
+    border-bottom: 2px solid var(--gotg-line);
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: #FBF3E9;
+}
+
+.badge.bg-secondary {
+    background-color: var(--gotg-slate) !important;
+    font-weight: 500;
+}
+
+.footer {
+    background: var(--gotg-charcoal);
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.88rem;
+}
+
+    .footer a {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+@media (max-width: 576px) {
+    .display-5.fw-bold {
+        font-size: 2rem;
+    }
+
+    .p-5.mb-4.bg-light.rounded-3 {
+        padding: 2rem !important;
+    }
+}
+
+.skip-link {
+    position: absolute;
+    top: -48px;
+    left: 1rem;
+    z-index: 2000;
+    background: var(--gotg-charcoal);
+    color: #fff;
+    padding: 0.6rem 1rem;
+    border-radius: 0 0 8px 8px;
+    font-weight: 600;
+    transition: top 0.15s ease;
+}
+
+    .skip-link:focus {
+        top: 0;
+        color: #fff;
+    }
+
+.navbar.bg-danger {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+}
+
+p, .lead, .card-text {
+    max-width: 70ch;
+}
+
+.btn,
+.form-control,
+.form-select,
+.nav-link,
+.accordion-button {
+    min-height: 44px;
+}
+
+.btn-sm {
+    min-height: 36px; 
+}
+
+.btn:disabled,
+.btn.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.btn-loading {
+    position: relative;
+    color: transparent !important;
+    pointer-events: none;
+}
+
+    .btn-loading::after {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 50%;
+        left: 50%;
+        margin: -8px 0 0 -8px;
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        border-top-color: #fff;
+        border-radius: 50%;
+        animation: btn-spin 0.6s linear infinite;
+    }
+
+@keyframes btn-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.text-danger[data-valmsg-for],
+span.text-danger {
+    display: block;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+.form-control.input-validation-error,
+.form-select.input-validation-error {
+    border-color: #C0392B;
+    background-color: #FFF6F5;
+}
+
+    .form-control.input-validation-error:focus {
+        box-shadow: 0 0 0 0.2rem rgba(192, 57, 43, 0.15);
+    }
+
+.validation-summary-errors ul {
+    margin-bottom: 0;
+    padding-left: 1.2rem;
+}
+
+.required-mark {
+    color: var(--gotg-orange-dark);
+    margin-left: 2px;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    color: var(--gotg-slate);
+    border: 1px dashed var(--gotg-line);
+    border-radius: 12px;
+    background: #fff;
+}
+
+    .empty-state .empty-state-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        opacity: 0.6;
+    }
+
+.table > :not(caption) > * > * {
+    padding: 0.85rem 0.9rem;
+    vertical-align: middle;
+}
+
+.table-hover > tbody > tr:hover > * {
+    background-color: #FFF4EA;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-weight: 600;
+    color: var(--gotg-slate);
+    text-decoration: none;
+    margin-bottom: 1rem;
+}
+
+    .back-link:hover {
+        color: var(--gotg-orange-dark);
+    }
+
+.text-muted {
+    color: #6B7280 !important;
+}
